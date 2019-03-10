@@ -1,0 +1,59 @@
+<div class="container">
+	<div class="row">
+		<div class="col s6 offset-s3 card hoverable  grey lighten-4">
+			<div class="row blue lighten-3">
+				<div class="col m12 center">
+					<h4 class="white-text">Sign Up</h4>
+					<mat-divider></mat-divider>
+				</div>
+			</div>
+
+			<form [formGroup]='signUpForm' (ngSubmit)='SignUp()'>
+                <div class="row" *ngIf="flag">
+                    <mat-error>{{flag}}</mat-error>
+                </div>
+				<div class="row">
+					<div class="input-field col s8 offset-s2">
+						<input type='text' placeholder="Email" formControlName='email' >
+            <mat-error *ngIf="Email.touched && Email.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="Email.touched && Email.hasError('email')">Email is not valid</mat-error>
+                    </div>
+                </div>
+                <div formGroupName='passwords'>
+                <div class="row">
+                    <div class="input-field col s8 offset-s2">
+                        <input type="password" formControlName='password' placeholder="Password">
+                        <mat-error *ngIf="Password.touched && Password.hasError('required')">password is required</mat-error>
+                        <mat-error *ngIf="Password.touched && Password.hasError('pattern')">Password is not valid</mat-error>
+                        <mat-error *ngIf="Password.touched && Password.hasError('PasswordShouldNotContainSpace')">Password cannot contain a space</mat-error>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8 offset-s2">
+                        <input type="password" formControlName='ConfirmPassword' placeholder="Confirm Password">
+                        <mat-error *ngIf="ConfirmPassword.touched && ConfirmPassword.hasError('required')">password is required</mat-error>
+                        <mat-error *ngIf="ConfirmPassword.touched && ConfirmPassword.hasError('pattern')">Password is not valid</mat-error>
+                        <mat-error *ngIf="ConfirmPassword.touched && ConfirmPassword.hasError('PasswordShouldNotContainSpace')">Password cannot contain a space</mat-error>
+                    </div>
+                </div>
+                <div class="row" *ngIf="GroupPasswords.hasError('mismatch') && Password.valid && ConfirmPassword.valid">
+                  <div class="col s8 offset-s2">
+                    <mat-error>Passwords don't match</mat-error>
+                  </div>
+                  
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col s10 offset-s1 center">
+                        <button (click)='con()'>logger</button>
+                        <button class="btn waves-effect red waves-light" type="submit" >signup
+                            <i class="material-icons right">rotate_left</i>
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

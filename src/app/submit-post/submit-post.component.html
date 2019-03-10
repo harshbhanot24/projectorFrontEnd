@@ -1,0 +1,87 @@
+
+<div class="container ">
+    <div class="col s10 offset-s1">
+        <div class="card container  hoverable grey lighten-4">
+        <div class="row blue lighten-3">
+            <div class="col m12 center">
+                <h4 class="">Submit Post</h4>
+                <mat-divider></mat-divider>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col m12 ">
+                <form [formGroup]='form'>
+                    <div class="row">
+                        <div class="input-field col s8 offset-s1">  
+                            <input id="heading" type="text" class="validate" data-length="150" formControlName='heading'><!--input 1-->
+                            <label class="active" for="heading">Heading</label>
+                            <mat-error *ngIf='Heading.touched && Heading.hasError("required")'>Heading is required</mat-error>
+                            <mat-error *ngIf='Heading.hasError("minlength")'>Heading is too short</mat-error>
+                            <mat-error *ngIf='Heading.hasError("maxlength")'>Heading is too long</mat-error>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10 offset-s1">
+
+                            <textarea id="details" class="materialize-textarea validate" formControlName='details' ></textarea><!--input 2-->
+                            <label for="details">Textarea</label>
+                             <mat-error *ngIf='GetDetails.touched && GetDetails.hasError("invalid")' >Details are required</mat-error>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s10 offset-s1">
+                        <div class="file-field input-field">
+                        <div>
+                            
+                            <input type="file" multiple details='file' id='file'><!--input 3-->
+                            <span class="file-path-wrapper">
+                        <input class="file-path validate" type="text" id='file_name'>
+                        <label for='file_name'>Attachments <mat-icon> attach_file</mat-icon></label>
+                      </span>
+                        </div>
+
+                    </div>
+                      </div>
+                    </div>
+                    
+                    <div class="input-field col s10 offset-s1">
+                        <mat-form-field>
+                            <mat-select [(value)]="selected" multiple placeholder="Tags"  formControlName='tags' id='tags'><!--input 4-->
+                                <mat-option disabled>Select a tag</mat-option>
+                                <mat-option value="option1">tag 1</mat-option>
+                                <mat-option value="option2">tag 2</mat-option>
+                                <mat-option value="option3">tag 3</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <p>You selected: {{selected}}</p>
+                    </div>
+                        <div class="input-field col s10 offset-s1">
+                      <input id="newTags" type="text" class="validate" data-length="150" (keyup.enter)="addTag(Newtag)" #Newtag>
+                    <ul>
+                      <li *ngFor="let tags of NewTag.controls" (click)='RemoveTopic(tags)'>
+                          {{tags.value}}
+                      </li>
+                  </ul>
+                    </div>
+                    <div class="row">
+                        <div class="col s10 offset-s1 center">
+                            <button class="btn waves-effect green waves-light" type="submit" name="action">Submit
+                                <i class="material-icons left">send</i>
+                            </button>
+                            <button class="btn waves-effect red waves-light" type="reset" name="action">Reset
+                                <i class="material-icons right">rotate_left</i>
+                            </button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div><!-- End of container -->
+    <br>
+    
