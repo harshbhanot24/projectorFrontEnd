@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FilterTopComponent } from './filter-top/filter-top.component';
 import { HttpClientModule } from '@angular/common/http'; 
+import {FileUploadModule} from 'ng2-file-upload';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     SignupComponent,
     FilterTopComponent
   ],
-  imports: [
+  imports: [FileUploadModule,
     BrowserModule,BrowserAnimationsModule,MatButtonModule, MatCheckboxModule,
     AppRoutingModule,DemoMaterialModule,FormsModule,ReactiveFormsModule,HttpClientModule
   ],

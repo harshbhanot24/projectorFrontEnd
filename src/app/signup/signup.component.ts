@@ -57,6 +57,6 @@ this.service.SignUp(this.signUpForm.value).subscribe(
   this.flag=err.error;
   setTimeout(()=>{
     this.flag=null;
-  },3000)
+  },5000)
  }
 }

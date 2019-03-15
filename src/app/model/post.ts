@@ -6,7 +6,7 @@ export class Post {
   private description:string,
   private date:string,
   private view:number,
-  private like:boolean,
+  private like:number,
   private tags?:string[],
   private links?:string[]){
 

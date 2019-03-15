@@ -1,17 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import  {FormGroup,FormControl,FormArray} from '@angular/forms';
 import {FormsModule,ReactiveFormsModule,Validators} from '@angular/forms';
+import {FileSelectDirective,FileUploader} from 'ng2-file-upload';
+import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-submit-post',
   templateUrl: './submit-post.component.html',
   styleUrls: ['./submit-post.component.css']
 })
 export class SubmitPostComponent implements OnInit {
+  private url:string="http://localhost:3000/posts";
+uploader:FileUploader=new FileUploader({url:this.url})
+attachmentList:any=[];
+constructor(public http: HttpClient){
+
+     this.uploader.onCompleteItem=(Item:any,response:any,status:any)=>{
+        this.attachmentList.push(response);
+        console.log(this.attachmentList)
+     }
+}
+submit(){
+
+  console.log("hy"+this.form.value)
+}
   form=new FormGroup(
 {
   heading:new FormControl('',{validators:[Validators.required,Validators.minLength(3),Validators.maxLength(5)],updateOn: 'blur'}),
   details:new FormControl('',[Validators.required,Validators.minLength(10)]),
-  file: new FormControl(''),
+ 
   tags:new FormControl('',Validators.required),
   NewTags:new FormArray([],)
 }
@@ -33,7 +49,7 @@ export class SubmitPostComponent implements OnInit {
    let index=this.NewTag.controls.indexOf(tags);
    this.NewTag.removeAt(index);
  }
-  constructor() { }
+ 
 
   ngOnInit() {
   }

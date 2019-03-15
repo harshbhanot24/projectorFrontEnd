@@ -1,38 +1,54 @@
+
+
 <div class="container">
-    <div class="row">
-        <div class="col s6 offset-s3 card hoverable  grey lighten-4">
-            <div class="row blue lighten-3">
-                <div class="col m12 center">
-                    <h4 class="white-text">Login</h4>
-                    <mat-divider></mat-divider>
-                </div>
-            </div>
-
-            <form>
-                <div class="row">
-                    <div class="input-field col s8 offset-s2">
-                        <input placeholder="Email">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s8 offset-s2">
-                        <input type="password" placeholder="Password">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s10 offset-s1 center">
-                        <button class="btn waves-effect green waves-light" type="submit" name="action" routerLink='/postProject'>Login
-                            <i class="material-icons left">send</i>
-                        </button>
-                        <button class="btn waves-effect red waves-light" type="reset" name="action" routerLink='/signup'>signup
-                            <i class="material-icons right">rotate_left</i>
-                        </button>
-
-                    </div>
-                </div>
-            </form>
-
-        </div>
+    <br><br><br>
+      <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="container border-primary">
+      <div class="row">
+          <div class="col-md-12 card border-primary ">
+              <div class="row">
+                  <div class="col-md-12 text-center alert alert-primary">
+                      <h4 class="text text-center">Sign Up</h4>
+  
+                  </div>
+              </div>
+              <form [formGroup]='loginForm' (ngSubmit)='login()'>
+                  <div class="row text-center" *ngIf="flag">
+                      <div>{{flag}}</div>
+                  </div>
+  
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName='email'>
+                      <small *ngIf="Email.touched && Email.hasError('required')">Email is required</small>
+                      <small *ngIf="Email.touched && Email.hasError('email')">Email is not valid</small>
+                  </div>
+                  
+                      <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName='password'>
+                          <small *ngIf="Password.touched && Password.hasError('required')">password is required</small>
+                          <small *ngIf="Password.touched && Password.hasError('pattern')">Password is not valid</small>
+                          <small *ngIf="Password.touched && Password.hasError('PasswordShouldNotContainSpace')">Password cannot contain a space</small>
+                      </div>
+  
+                     
+                 
+                  <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">I have read all the policies</label>
+                  </div>
+                  <button type="submit" [disabled]='!loginForm.valid' class="btn btn-primary" router-link='/postProject'>Submit</button>
+                
+              </form>
+  
+          </div>
     </div>
-</div>
+      
+  </div>
+      </div>
+    </div>
+  </div>
+  

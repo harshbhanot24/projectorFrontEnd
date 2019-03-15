@@ -1,22 +1,25 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
+import { Subject,Observable} from 'rxjs';
 import { AppError, NotFoundError } from './../common';
 import {Post} from '../model/post';
 import {User} from '../model/user';
+import {FileSelectDirective,FileUploader} from 'ng2-file-upload';
 @Injectable()
 export class DataService {
 
-  constructor(public http: HttpClient){}
+  
 private url:string="https://fast-waters-72330.herokuapp.com";
-SignUp(user){
- return this.http.post(`${this.url}/signUp`,user)
+uploader:FileUploader=new FileUploader({url:this.url})
+attachmentList:any=[];
+constructor(public http: HttpClient){
+     this.uploader.onCompleteItem=(Item:any,response:any,status:any,header:any)=>{
+        this.attachmentList.push(JSON.parse(response));
+     }
 }
-
-  login(user){
-   return this.http.post(`${this.url}/login`,user)
-  }
   getAll(){
     return this.http.get(this.url)
     .pipe(catchError(this.handleError));

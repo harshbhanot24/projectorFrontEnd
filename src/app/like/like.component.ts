@@ -8,20 +8,37 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 export class LikeComponent implements OnInit {
   @Output('likeData') likeData = new EventEmitter();
   @Input('likeInput') likeInput;
-  private like: boolean;
-  private star: string = 'star';
+  private like:number;
+  private thumbs: string;
   constructor() { }
 
   ngOnInit() {
-    this.like = this.likeInput;
+    if(!this.likeInput){
+      this.like=0;
+    }else
+    this.like = this.likeInput;//0,1,-1 o nothing 1 like -1 dislike
+    if(this.like==0){
+      this.thumbs="fa fa-thumbs-o-up";
+    }
+    if(this.like==1){
+      this.thumbs="fa fa-thumbs-up";
+    }
+    else if(this.like==-1){
+      this.thumbs="fa fa-thumbs-down";
+    }
   }
   OnClick() {
-
-    this.like = !this.like;
-    if (!this.like) {
-      this.star = 'star_border';
-    } else {
-      this.star = 'star';
+    if(this.like==0){
+      this.thumbs="fa fa-thumbs-up";
+       this.like=1;
+    }
+     if(this.like==1){
+      this.thumbs="fa fa-thumbs-down";
+      this.like=-1;
+    }
+    else if(this.like==-1){
+      this.thumbs="fa fa-thumbs-up";
+       this.like=1;
     }
     this.likeData.emit(this.like);
   }

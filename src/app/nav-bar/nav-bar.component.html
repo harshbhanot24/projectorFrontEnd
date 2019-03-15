@@ -1,49 +1,20 @@
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-
-</script>
-<ul id="dropdown1" class="dropdown-content">
-	<li><a href="#!">one</a></li>
-	<li><a href="#!">two</a></li>
-	<li class="divider"></li>
-	<li><a href="#!">three</a></li>
-</ul>
-<nav>
-	<div class="nav-wrapper">
-		<a href="#!" class="brand-logo">Logo</a>
-		<ul class="right hide-on-med-and-down">
-			<li><a href="sass.html">Sass</a></li>
-			<li><a href="badges.html">Components</a></li>
-			<!-- Dropdown Trigger -->
-			<!-- <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li> -->
-    <!-- </ul>
-  </div>
-</nav> --> 
-
-<!-->>>>>>>>>>>>>>>>>>>>>>>> -->
-<mat-toolbar class='red lighten-4'>
-  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-  <mat-button-toggle value="bold" class='red lighten-3 white-text' routerLink='/' >Home</mat-button-toggle>
-  <mat-button-toggle value="bold" class='red lighten-3 white-text'>About Us</mat-button-toggle>
-  <mat-button-toggle value="italic" class='red lighten-3 white-text' routerLink='/login' >Submit Post</mat-button-toggle>
-  <mat-button-toggle value="underline" class='red lighten-3 white-text'>Contact Us</mat-button-toggle>
-   
-</mat-button-toggle-group>
-    <span class="example-fill-remaining-space"></span>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-  <mat-icon>more_vert</mat-icon>
-</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>dialpad</mat-icon>
-    <span>Redial</span>
-  </button>
-  <button mat-menu-item disabled>
-    <mat-icon>voicemail</mat-icon>
-    <span>Check voicemail</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>notifications_off</mat-icon>
-    <span>Disable alerts</span>
-  </button>
-</mat-menu>
-</mat-toolbar>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark  justify-content-between sticky-top">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink='/'>Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About Us</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink='/login' >login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " routerLink='/postProject'>submit Post</a>
+    </li>
+  </ul>
+   <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>

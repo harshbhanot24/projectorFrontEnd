@@ -1,59 +1,64 @@
 <div class="container">
-	<div class="row">
-		<div class="col s6 offset-s3 card hoverable  grey lighten-4">
-			<div class="row blue lighten-3">
-				<div class="col m12 center">
-					<h4 class="white-text">Sign Up</h4>
-					<mat-divider></mat-divider>
-				</div>
-			</div>
-
-			<form [formGroup]='signUpForm' (ngSubmit)='SignUp()'>
-                <div class="row" *ngIf="flag">
-                    <mat-error>{{flag}}</mat-error>
-                </div>
-				<div class="row">
-					<div class="input-field col s8 offset-s2">
-						<input type='text' placeholder="Email" formControlName='email' >
-            <mat-error *ngIf="Email.touched && Email.hasError('required')">Email is required</mat-error>
-            <mat-error *ngIf="Email.touched && Email.hasError('email')">Email is not valid</mat-error>
-                    </div>
-                </div>
-                <div formGroupName='passwords'>
-                <div class="row">
-                    <div class="input-field col s8 offset-s2">
-                        <input type="password" formControlName='password' placeholder="Password">
-                        <mat-error *ngIf="Password.touched && Password.hasError('required')">password is required</mat-error>
-                        <mat-error *ngIf="Password.touched && Password.hasError('pattern')">Password is not valid</mat-error>
-                        <mat-error *ngIf="Password.touched && Password.hasError('PasswordShouldNotContainSpace')">Password cannot contain a space</mat-error>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s8 offset-s2">
-                        <input type="password" formControlName='ConfirmPassword' placeholder="Confirm Password">
-                        <mat-error *ngIf="ConfirmPassword.touched && ConfirmPassword.hasError('required')">password is required</mat-error>
-                        <mat-error *ngIf="ConfirmPassword.touched && ConfirmPassword.hasError('pattern')">Password is not valid</mat-error>
-                        <mat-error *ngIf="ConfirmPassword.touched && ConfirmPassword.hasError('PasswordShouldNotContainSpace')">Password cannot contain a space</mat-error>
-                    </div>
-                </div>
-                <div class="row" *ngIf="GroupPasswords.hasError('mismatch') && Password.valid && ConfirmPassword.valid">
-                  <div class="col s8 offset-s2">
-                    <mat-error>Passwords don't match</mat-error>
+    <br><br><br>
+      <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="container border-primary">
+      <div class="row">
+          <div class="col-md-12 card border-primary ">
+              <div class="row">
+                  <div class="col-md-12 text-center alert alert-primary">
+                      <h4 class="text text-center">Sign Up</h4>
+  
                   </div>
-                  
-                </div>
-                </div>
-                <div class="row">
-                    <div class="col s10 offset-s1 center">
-                        <button (click)='con()'>logger</button>
-                        <button class="btn waves-effect red waves-light" type="submit" >signup
-                            <i class="material-icons right">rotate_left</i>
-                        </button>
-
+              </div>
+              <form [formGroup]='signUpForm' (ngSubmit)='SignUp()'>
+                  <div class="row text-center" *ngIf="flag">
+                      <div>{{flag}}</div>
+                  </div>
+  
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName='email'>
+                      <small *ngIf="Email.touched && Email.hasError('required')">Email is required</small>
+                      <small *ngIf="Email.touched && Email.hasError('email')">Email is not valid</small>
+                  </div>
+                  <div formGroupName='passwords'>
+                      <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName='password'>
+                          <small *ngIf="Password.touched && Password.hasError('required')">password is required</small>
+                          <small *ngIf="Password.touched && Password.hasError('pattern')">Password is not valid</small>
+                          <small *ngIf="Password.touched && Password.hasError('PasswordShouldNotContainSpace')">Password cannot contain a space</small>
+                      </div>
+  
+                      <div class="form-group">
+                          <label for="exampleInputPassword1">Confirm Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password" formControlName='ConfirmPassword'>
+                          <small *ngIf="ConfirmPassword.touched && ConfirmPassword.hasError('required')">password is required</small>
+                          <small *ngIf="ConfirmPassword.touched && ConfirmPassword.hasError('pattern')">Password is not valid</small>
+                          <small *ngIf="ConfirmPassword.touched && ConfirmPassword.hasError('PasswordShouldNotContainSpace')">Password cannot contain a space</small>
+                      </div>
+                      <div class="row" *ngIf="GroupPasswords.hasError('mismatch') && Password.valid && ConfirmPassword.valid">
+                    <div class="col s8 offset-s2">
+                      <small>Passwords don't match</small>
                     </div>
-                </div>
-            </form>
-
-        </div>
+                    
+                  </div>
+                  </div>
+                  <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">I have read all the policies</label>
+                  </div>
+                  <button type="submit" [disabled]='!signUpForm.valid' class="btn btn-primary">Submit</button>
+                
+              </form>
+  
+          </div>
     </div>
-</div>
+      
+  </div>
+      </div>
+    </div>
+  </div>
+  
