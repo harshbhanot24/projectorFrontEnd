@@ -19,6 +19,10 @@ import { SignupComponent } from './signup/signup.component';
 import { FilterTopComponent } from './filter-top/filter-top.component';
 import { HttpClientModule } from '@angular/common/http'; 
 import {FileUploadModule} from 'ng2-file-upload';
+import { AdminComponent } from './admin/admin.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BasicDetailComponent } from './ProfileChild/basic-detail/basic-detail.component';
+import { CompanyCollegeComponent } from './ProfileChild/company-college/company-college.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +35,12 @@ import {FileUploadModule} from 'ng2-file-upload';
     PostsComponent,
     LoginComponent,
     SignupComponent,
-    FilterTopComponent
+    FilterTopComponent,
+  
+    AdminComponent,
+    ProfileComponent,
+    BasicDetailComponent,
+    CompanyCollegeComponent
   ],
   imports: [FileUploadModule,
     BrowserModule,BrowserAnimationsModule,MatButtonModule, MatCheckboxModule,

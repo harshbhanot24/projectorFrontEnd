@@ -9,11 +9,13 @@ import {User} from '../model/user';
 export class DataService {
 
   constructor(public http: HttpClient){}
-private url:string="https://fast-waters-72330.herokuapp.com";
+private url:string="http://localhost:3000";
 SignUp(user){
  return this.http.post(`${this.url}/signUp`,user)
 }
-
+table(){
+  return this.http.get(`${this.url}/table`)
+}
   login(user){
    return this.http.post(`${this.url}/login`,user)
   }
