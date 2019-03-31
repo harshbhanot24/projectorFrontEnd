@@ -12,7 +12,7 @@ import { BasicDetailComponent } from './ProfileChild/basic-detail/basic-detail.c
 import { CompanyCollegeComponent } from './ProfileChild/company-college/company-college.component';
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
+  
   {path:'postProject',component:SubmitPostComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
@@ -33,7 +33,8 @@ const routes: Routes = [
   path: "Company",
   component: CompanyCollegeComponent
 }
-]}
+]},
+{path:'',component:HomeComponent,pathMatch: 'full'}
 
   ];
 

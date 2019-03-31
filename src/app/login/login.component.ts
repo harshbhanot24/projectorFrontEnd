@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {DataService} from '../Services/data.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +10,7 @@ import {DataService} from '../Services/data.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private service:DataService) { }
+  constructor(private service:DataService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -24,17 +25,22 @@ export class LoginComponent implements OnInit {
   login(){
     console.log('logging happening')
       this.service.login(this.loginForm.value).subscribe(
-        (res)=>console.log(res),
-        (err)=>{
-      this.ResetForm(err);
+        (res:Response)=>{console.log(res.status)
+          if (res.status==200){
+            
+            this.router.navigate(['']);
+            console.log('hy status')
+          }
+        },
+        (err)=>{  
+      this.ResetForm(err.error);
     }
     ,()=>console.log('completed')
     );
   }
    ResetForm(err){
-   console.log('hy this is the error',err)
   this.loginForm.reset();
-  this.flag=err.error;
+  this.flag=err.err;
   setTimeout(()=>{
     this.flag=null;
   },3000)

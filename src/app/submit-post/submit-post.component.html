@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <button class="btn btn-dark" (click)="item.upload()">Upload</button>
-                                        <button class="btn btn-danger" (click)="item.remove()">Remove</button>
+                                        <button class="btn btn-danger" (click)="remove(item)">Remove</button>
                                     </div>
                                 </div>
                                 <div class="row" *ngIf='uploader?.queue?.length >0'>
@@ -71,7 +71,7 @@
                             </div>
                         
                             <div class="card-footer bg-secondary text-white">
-                                <button class="btn btn-primary" type="submit" name="action">Submit
+                                <button class="btn btn-primary" type="submit" (click)='submit()' name="action">Submit
                                     <i class="material-icons left">send</i>
                                 </button>
                                 <button class="btn btn-danger" type="reset" name="action">Reset

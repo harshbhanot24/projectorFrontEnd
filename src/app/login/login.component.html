@@ -10,13 +10,13 @@
           <div class="col-md-12 card border-primary ">
               <div class="row">
                   <div class="col-md-12 text-center alert alert-primary">
-                      <h4 class="text text-center">Sign Up</h4>
+                      <h4 class="text text-center">Login</h4>
   
                   </div>
               </div>
               <form [formGroup]='loginForm' (ngSubmit)='login()'>
-                  <div class="row text-center" *ngIf="flag">
-                      <div>{{flag}}</div>
+                  <div class="row" *ngIf="flag">
+                      <div class="text text-danger text-center">{{flag}}</div>
                   </div>
   
                   <div class="form-group">

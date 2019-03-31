@@ -23,6 +23,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BasicDetailComponent } from './ProfileChild/basic-detail/basic-detail.component';
 import { CompanyCollegeComponent } from './ProfileChild/company-college/company-college.component';
+import { PreferencesComponent } from './ProfileChild/preferences/preferences.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { CompanyCollegeComponent } from './ProfileChild/company-college/company-
     AdminComponent,
     ProfileComponent,
     BasicDetailComponent,
-    CompanyCollegeComponent
+    CompanyCollegeComponent,
+    PreferencesComponent
   ],
   imports: [FileUploadModule,
     BrowserModule,BrowserAnimationsModule,MatButtonModule, MatCheckboxModule,

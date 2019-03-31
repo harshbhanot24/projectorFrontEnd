@@ -10,6 +10,9 @@ export class DataService {
 
   constructor(public http: HttpClient){}
 private url:string="http://localhost:3000";
+submit(post){
+  return this.http.post(`${this.url}/form`,post);
+}
 SignUp(user){
  return this.http.post(`${this.url}/signUp`,user)
 }
