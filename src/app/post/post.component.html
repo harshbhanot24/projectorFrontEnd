@@ -4,13 +4,13 @@
 <div class="media border p-3 bg-primary text-white">
     <img src="{{user.AvatarUrl}}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
     <div class="media-body">
-      <h5>{{user.name}} <small><i>Posted on February 19, 2016</i></small></h5>
+      <h5>{{user.name}} <small><i>Posted on {{post.DateCreated | date}}</i></small></h5>
       <h4> {{post.heading}}</h4>
        </div>
        </div>
       <div class="card-body">
 
-          <p>{{post.description}}</p>
+          <p class="text text-justify text-primary"[froalaView]='post.post | slice:1:400'></p>
 
       </div>
 
@@ -18,7 +18,7 @@
    
     <div class="p-2 bg-warning"><app-like [likeInput]='post.like'></app-like>&nbsp;23</div>
     <div class="p-2 bg-primary"><app-views [views]='post.view'></app-views></div>
-    <div class="p-2 bg-warning"><span>{{post.date}}</span></div>
+    <div class="p-2 bg-warning"><span>{{post.DateCreated | date}}</span></div>
     <div class="p-2 bg-primary"><i class="fa fa-tags"></i><span *ngFor='let tag of post.tags'><strong>{{tag}}&nbsp;</strong></span></div>
   </div>
   

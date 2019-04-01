@@ -10,10 +10,11 @@ import { AdminComponent } from './admin/admin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BasicDetailComponent } from './ProfileChild/basic-detail/basic-detail.component';
 import { CompanyCollegeComponent } from './ProfileChild/company-college/company-college.component';
+import { PreferencesComponent } from './ProfileChild/preferences/preferences.component';
 
 const routes: Routes = [
   
-  {path:'postProject',component:SubmitPostComponent},
+  {path:'post',component:SubmitPostComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   
@@ -32,6 +33,10 @@ const routes: Routes = [
 {
   path: "Company",
   component: CompanyCollegeComponent
+},
+{
+  path:"preference",
+  component:PreferencesComponent
 }
 ]},
 {path:'',component:HomeComponent,pathMatch: 'full'}

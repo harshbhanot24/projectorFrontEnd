@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Input,Component, OnInit } from '@angular/core';
 import {DataService} from '../Services/data.service';
 import {Post} from '../model/post';
 import {User} from '../model/user';
@@ -8,13 +8,14 @@ import {User} from '../model/user';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-private post:Post;
+  @Input('PostData') post;
+
 private user:User;
   constructor(private service:DataService) { }
 
   ngOnInit() {
     this.user=this.service.getUser();
-    this.post=this.service.getPosts();
+    //this.post=this.service.getPosts();
     
   }
 

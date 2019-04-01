@@ -1,40 +1,42 @@
-<div class="container card">
+<div class="card">
+  
+  <h5 class="card-header bg-info text-white text-center">So where are you working </h5>
   <br>
 	<div class="row">
-    <div class="col-md-12">
-      <form>
+    <div class="col-md-10 offset-md-1">
+      <form [formGroup]='WorkDetailForm' (ngSubmit)='WorkDetailPost()'>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">College</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="College">
+      <input type="text" formControlName='College' class="form-control" id="College" placeholder="College">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">University</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="University">
+      <input type="text" formControlName='University' class="form-control" id="University" placeholder="University">
     </div>
   </div>
    <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Specialization</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Specialization/Degree/Diploma">
+      <input type="text" formControlName='Specialization' class="form-control" id="Specialization" placeholder="Specialization/Degree/Diploma">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Passing Year</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="passing Year">
+      <input type="number" min='1950' max='2050' formControlName='PassingYear' class="form-control" id="Year" placeholder="passing Year">
     </div>
   </div>
   
  
     <div class="form-group ">
      <label for="inputPassword4">Company Name</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Company">
+      <input type="text" formControlName='Company' class="form-control" id="Company" placeholder="Company">
     </div>
   <div class="custom-control custom-radio">
-  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+  <input type="radio" id="customRadio1"  formControlName='currentWork' value="student" name="currentWork" class="custom-control-input">
   <label class="custom-control-label" for="customRadio1">I am a Student/Enthusiast</label>
 </div>
 <div class="custom-control custom-radio">
-  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+  <input type="radio" id="customRadio2" formControlName='currentWork'  value="working" name="currentWork" class="custom-control-input">
   <label class="custom-control-label" for="customRadio2">A working Proffesional</label>
 </div>
   <div class="btn-group" role="group" aria-label="Basic example">

@@ -25,7 +25,7 @@ Remove(Item){
   let id=this.attachmentList.indexOf(Item)
   this.attachmentList.slice(id,1);
 }
-submit(){
+ONsubmit(){
   let post={
         form:this.form.value,
         uploadFileList:this.attachmentList

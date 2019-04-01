@@ -1,49 +1,58 @@
-<div class="container card">
-  <br>
-	<div class="row">
-    <div class="col-md-6">
-      <form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-    </div>
+
+<div class=" card">
+  <h5 class="card-header bg-info text-white text-center">Tell us more about you</h5>
+<br>
+<div class="row">
+  <div class="col-md-6 offset-md-1">
+   
+    <form [formGroup]='BasicDetailForm' (ngSubmit)='DetailPost()'>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="inputEmail4" >Email</label>
+    <input type="email" formControlName='email' class="form-control" id="inputEmail4" placeholder="Email">
+    <small *ngIf="Email.touched && Email.hasError('required')" class="text text-danger">Email is required</small>
+    <small *ngIf="Email.touched && Email.hasError('email')" class="text text-danger">Email is not valid</small>
   </div>
-  
-  <div class="form-group">
-    <label for="inputAddress2">User Name</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Create a unique UserName">
+  <div class="form-group col-md-6">
+    <label for="inputPassword4">Password</label>
+    <input type="password"  formControlName='password' class="form-control" id="inputPassword4" placeholder="Password">
+    <small *ngIf="Password.touched && Password.hasError('required')" class="text text-danger">password is required</small>
+    <small *ngIf="Password.touched && Password.hasError('pattern')" class="text text-danger">Password is not valid</small>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputAddress2">User Name</label>
+  <input type="text" formControlName='userName' class="form-control" id="inputAddress2" placeholder="Create a unique UserName">
+  <small *ngIf="userName.touched && userName.hasError('required')" class="text text-danger">userName is required</small>
+    <small *ngIf="userName.touched && userName.hasError('pattern')" class="text text-danger">userName is not valid</small>
+</div>
+
+  <div class="form-group ">
+    <label for="inputState">Gender</label>
+    <select id="inputState" class="form-control" formControlName='gender'>
+      <option selected>Choose...</option>
+      <option value="male">male</option>
+      <option value="female">female</option>
+      <option value="others">others</option>
+    </select>
   </div>
  
-    <div class="form-group ">
-      <label for="inputState">Gender</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>male</option>
-        <option>female</option>
-        <option>others</option>
-      </select>
-    </div>
-   
-  <div class="form-group">
-   <div class="custom-file">
-  <input type="file" class="custom-file-input" id="customFile">
-  <label class="custom-file-label" for="customFile">Choose Profile Pic</label>
+<div class="form-group">
+ <div class="custom-file">
+<input type="file" class="custom-file-input" id="customFile" formControlName='file'>
+<label class="custom-file-label" for="customFile">Choose Profile Pic</label>
 </div>
-  </div>
-  <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="submit" class="btn btn-primary">Save</button>
-  <button type="submit" class="btn btn-danger">Reset</button>
-  </div>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+<button type="submit" class="btn btn-primary" [disabled]='!BasicDetailForm.valid'>Save</button>
+<button type="reset" class="btn btn-danger">Reset</button>
+</div>
 </form>
-    </div>
-<div class="col-md-6">
-  Here image will come
-</div>
   </div>
-  <br>
+<div class="col-md-5">
+Here image will come
+</div>
+</div>
+<br>
 </div>

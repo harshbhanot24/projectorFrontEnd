@@ -1,0 +1,34 @@
+
+
+<div class="card">
+    <h5 class="card-header bg-info text-white text-center">Domain Preferences</h5>
+    <div class="card-body">
+      <h5 class="card-title">Select <strong class="text-danger">maximum</strong> 5 tags of your choice</h5>
+       <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Tags</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" (keyup.enter)="Search()" placeholder="Press enter" [(ngModel)]="Tag">
+  </div>
+  <div class="text text-danger" *ngIf="errorMsg">{{errorMsg}}}</div>
+     <ul class="list-group" >
+    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor='let pref of data'>
+     <div>
+       
+    <input type="checkbox"  id={{pref.id}} (click)='AddTag(pref.id)'> &nbsp;
+    <label for={{pref.id}}><span class="text text-primary">{{pref.Name}}</span></label>
+     </div>
+  
+      <span class="badge badge-primary badge-pill">{{pref.Count}}</span>
+    </li>
+    
+  </ul>
+  <br>
+     <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-danger">Reset</button>
+    </div>
+    <br><br>
+    </div>
+  </div>
+  <br><br>

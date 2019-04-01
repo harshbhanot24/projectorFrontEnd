@@ -24,6 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { BasicDetailComponent } from './ProfileChild/basic-detail/basic-detail.component';
 import { CompanyCollegeComponent } from './ProfileChild/company-college/company-college.component';
 import { PreferencesComponent } from './ProfileChild/preferences/preferences.component';
+import { UserDataService } from './Services/user-data.service';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,11 +46,11 @@ import { PreferencesComponent } from './ProfileChild/preferences/preferences.com
     CompanyCollegeComponent,
     PreferencesComponent
   ],
-  imports: [FileUploadModule,
+  imports: [FileUploadModule,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     BrowserModule,BrowserAnimationsModule,MatButtonModule, MatCheckboxModule,
     AppRoutingModule,DemoMaterialModule,FormsModule,ReactiveFormsModule,HttpClientModule
   ],
-  providers: [DataService],
+  providers: [DataService,UserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

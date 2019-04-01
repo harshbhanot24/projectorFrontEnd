@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row blue lighten-5">
     <div class="col s12">
-    <div *ngFor="let i of loop">
-      <app-post></app-post>
+    <div *ngFor="let post of PostData">
+      <app-post [PostData]='post'></app-post>
 
     </div>
     </div>

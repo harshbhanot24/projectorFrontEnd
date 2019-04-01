@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         (res:Response)=>{console.log(res.status)
           if (res.status==200){
             
-            this.router.navigate(['']);
+            this.router.navigate(['/post']);
             console.log('hy status')
           }
         },

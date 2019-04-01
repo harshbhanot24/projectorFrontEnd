@@ -7,7 +7,7 @@
                         <h4 class="text-center">Submit Post</h4>
                     </div>
     
-                    <form [formGroup]='form' (ngSubmit)='submit()' enctype="multipart/form-data">
+                    <form [formGroup]='form'  enctype="multipart/form-data">
                         <div class="card-body">
     
                             <div class="form-group col-md-6">
@@ -20,7 +20,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="details">Textarea</label>
-                                <textarea id="details" class="form-control" formControlName='details' placeholder="Enter Post Details"></textarea>
+                                <!-- <textarea id="details" class="form-control" formControlName='details' placeholder="Enter Post Details"></textarea> -->
+                                <textarea [froalaEditor] formControlName="details"></textarea>
                                 <!--input 2-->
                                 <small *ngIf='GetDetails.touched && GetDetails.hasError("invalid")'>Details are required</small>
                             </div>
@@ -57,7 +58,7 @@
                                     <option value="option3">tag 3</option>
                                 </select>
     
-                                <p>You selected: {{selected}}</p>
+                           
                             </div>
                             <div class="form-group">
                                 <label for="newTags">Add new Tags</label>
@@ -71,11 +72,11 @@
                             </div>
                         
                             <div class="card-footer bg-secondary text-white">
-                                <button class="btn btn-primary" type="submit" (click)='submit()' name="action">Submit
-                                    <i class="material-icons left">send</i>
+                                <button class="btn btn-primary" type="submit" (click)='ONsubmit()' name="action">Submit
+                                    
                                 </button>
-                                <button class="btn btn-danger" type="reset" name="action">Reset
-                                    <i class="material-icons right">rotate_left</i>
+                                <button class="btn btn-danger" type="reset" name="action1">Reset
+                                   
                                 </button>
                             </div>
                             </div>
