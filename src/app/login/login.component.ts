@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
           }
         },
         (err)=>{  
+          console.log(err.error)
       this.ResetForm(err.error);
     }
     ,()=>console.log('completed')

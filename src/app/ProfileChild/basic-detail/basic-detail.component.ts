@@ -12,15 +12,25 @@ export class BasicDetailComponent implements OnInit {
   constructor(private service:UserDataService) { }
 private user;
   ngOnInit() {
-    this.user=this.service.GetDetails(3);
-      this.setDefaultForm(this.user);
-    
+  this.service.GetDetails('5ca901e5852be73e38710a00')
+  .subscribe((res)=>{
+    this.user=res;
+    console.log(this.user)
+    this.setDefaultForm(this.user);
+}
+  )//have to thing of a logic to handle user session best way   
+  }
+  SaveChanges(){
+    console.log("save changes working",this.BasicDetailForm.value)
+    this.service.saveBasicDetails('5ca901e5852be73e38710a09',this.BasicDetailForm.value).subscribe((res)=>{
+      console.log("this is",res)
+    });
   }
         BasicDetailForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('',[Validators.required,Validators.pattern('^.{4,8}$')]),
-      userName:new FormControl('', [Validators.required]),
+      UserName:new FormControl('', [Validators.required]),
       gender:new FormControl('',[Validators.required]),
       file :new FormControl('')
     }
@@ -28,9 +38,10 @@ private user;
   );
   
    setDefaultForm(user){
+     console.log('i ma inside set default',user.email)
       this.BasicDetailForm.get('email').setValue(user.email);
       this.BasicDetailForm.get('password').setValue(user.password);
-      this.BasicDetailForm.get('userName').setValue(user.userName);
+      this.BasicDetailForm.get('UserName').setValue(user.UserName);
       this.BasicDetailForm.get('gender').setValue(user.gender);
    }//to set default values from data coming form database
    
@@ -41,7 +52,7 @@ private user;
   get Password(){
    return this.BasicDetailForm.get('password');
  }
- get userName(){
-   return this.BasicDetailForm.get('userName');
+ get UserName(){
+   return this.BasicDetailForm.get('UserName');
  }
   }

@@ -17,7 +17,7 @@ constructor(public http: HttpClient,private service:DataService){
 
      this.uploader.onCompleteItem=(Item:any,response:any,status:any)=>{
        console.log("this is response",response);
-        this.attachmentList.push(response);
+        this.attachmentList.push(response.id);
         console.log(this.attachmentList)
      }
 }

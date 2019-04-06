@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-6 offset-md-1">
    
-    <form [formGroup]='BasicDetailForm' (ngSubmit)='DetailPost()'>
+    <form [formGroup]='BasicDetailForm' (ngSubmit)='SaveChanges()'>
 <div class="form-row">
   <div class="form-group col-md-6">
     <label for="inputEmail4" >Email</label>
@@ -23,9 +23,9 @@
 
 <div class="form-group">
   <label for="inputAddress2">User Name</label>
-  <input type="text" formControlName='userName' class="form-control" id="inputAddress2" placeholder="Create a unique UserName">
-  <small *ngIf="userName.touched && userName.hasError('required')" class="text text-danger">userName is required</small>
-    <small *ngIf="userName.touched && userName.hasError('pattern')" class="text text-danger">userName is not valid</small>
+  <input type="text" formControlName='UserName' class="form-control" id="inputAddress2" placeholder="Create a unique UserName">
+  <small *ngIf="UserName.touched && UserName.hasError('required')" class="text text-danger">UserName is required</small>
+    <small *ngIf="UserName.touched && UserName.hasError('pattern')" class="text text-danger">UserName is not valid</small>
 </div>
 
   <div class="form-group ">
