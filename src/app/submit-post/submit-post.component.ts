@@ -16,9 +16,9 @@ attachmentList:any=[];
 constructor(public http: HttpClient,private service:DataService){
 
      this.uploader.onCompleteItem=(Item:any,response:any,status:any)=>{
-       console.log("this is response",response);
-        this.attachmentList.push(response.id);
-        console.log(this.attachmentList)
+       let result=JSON.parse(response);
+        this.attachmentList.push(result.resultSet);
+        console.log('this is attachment list',this.attachmentList)
      }
 }
 Remove(Item){

@@ -11,6 +11,8 @@ export class PostDataService {
   GetPosts(){
     return this.http.get(`${this.url}/form`)
   //logic to get user ID wuill be here
-  
+  }
+  getPost(id){
+    return this.http.get(`${this.url}/form/${id}`);
   }
 }

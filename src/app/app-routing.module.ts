@@ -11,9 +11,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { BasicDetailComponent } from './ProfileChild/basic-detail/basic-detail.component';
 import { CompanyCollegeComponent } from './ProfileChild/company-college/company-college.component';
 import { PreferencesComponent } from './ProfileChild/preferences/preferences.component';
+import { SinglePostComponent } from './single-post/single-post.component';
 
 const routes: Routes = [
-  
+  {path:'post/:id',component:SinglePostComponent},
   {path:'post',component:SubmitPostComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
