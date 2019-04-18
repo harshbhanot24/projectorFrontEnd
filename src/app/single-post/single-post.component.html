@@ -1,0 +1,50 @@
+<br><br>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Library</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Data</li>
+  </ol>
+</nav><br><br>
+<div class="container-fluid">
+  <div class="row">
+	<div class="col-3">
+    <aside>
+      <div class="card text-white bg-primary" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{post.user.Username}} </h5>
+    <p class="card-text">{{post.user.Username}} graduated from {{post.user.College}} and it comes under {{post.user.university}}.</p>
+    <a href="#" class="btn btn-info">Go somewhere</a>
+  </div>
+</div>
+    </aside>
+  </div>
+	<div class="col">
+    <h6>{{post.DateCreated | date}}</h6>
+    <h3>{{post.heading}}</h3>
+    <h6 class="text-muted blockquote-footer" >By {{post.user.Username}} </h6>
+    <p class="text text-justify text-primary" [froalaView]='post.post'>
+   <div class="d-flex flex-row  bg-info text-white">
+   
+    <div class="p-2 bg-warning"><app-like [likeInput]='34'></app-like>&nbsp;23</div>
+    <div class="p-2 bg-primary"><app-views [views]='5'></app-views></div>
+    <div class="p-2 bg-warning"><span>{{post.DateCreated | date}}</span></div>
+    <div class="p-2 bg-primary"><i class="fa fa-tags"></i><span *ngFor='let tag of post.tags'><strong>{{tag}}&nbsp;</strong></span></div>
+  </div>
+  
+  </div>
+	<div class="col-2">
+<div class="card border-success bg-primary text-white mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent ">Header</div>
+  <div class="card-body ">
+    <h5 class="card-title">Success card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <div class="card-footer bg-transparent border-success">Footer</div>
+</div>
+  </div>
+</div>
+</div>
+
+<br><br>

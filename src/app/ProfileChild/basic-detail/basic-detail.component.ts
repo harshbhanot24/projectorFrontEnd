@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {UserDataService} from '../../Services/user-data.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-basic-detail',
   templateUrl: './basic-detail.component.html',
@@ -11,8 +12,12 @@ export class BasicDetailComponent implements OnInit {
 
   constructor(private service:UserDataService) { }
 private user;
+ helper = new JwtHelperService();
+ decodedToken = this.helper.decodeToken(localStorage.getItem('token'));
+  id=this.decodedToken._id;
   ngOnInit() {
-  this.service.GetDetails('5ca901e5852be73e38710a00')
+    
+  this.service.GetDetails(this.id)
   .subscribe((res)=>{
     this.user=res;
     console.log(this.user)
@@ -22,7 +27,7 @@ private user;
   }
   SaveChanges(){
     console.log("save changes working",this.BasicDetailForm.value)
-    this.service.saveBasicDetails('5ca901e5852be73e38710a09',this.BasicDetailForm.value).subscribe((res)=>{
+    this.service.saveBasicDetails(this.id,this.BasicDetailForm.value).subscribe((res)=>{
       console.log("this is",res)
     });
   }
@@ -38,7 +43,6 @@ private user;
   );
   
    setDefaultForm(user){
-     console.log('i ma inside set default',user.email)
       this.BasicDetailForm.get('email').setValue(user.email);
       this.BasicDetailForm.get('password').setValue(user.password);
       this.BasicDetailForm.get('UserName').setValue(user.UserName);

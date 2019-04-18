@@ -2,17 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserDataService } from 'src/app/Services/user-data.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-company-college',
   templateUrl: './company-college.component.html',
   styleUrls: ['./company-college.component.css']
 })
 export class CompanyCollegeComponent implements OnInit{
-
+  
+  helper = new JwtHelperService();
+  decodedToken = this.helper.decodeToken(localStorage.getItem('token'));
+   id=this.decodedToken._id;
   constructor(private service:UserDataService) { }
   private user;
   ngOnInit() {
-    this.service.GetDetails('5ca901e5852be73e38710a00')
+    this.service.GetDetails(this.id)
   .subscribe((res)=>{
     this.user=res;
     console.log(this.user)
@@ -21,8 +25,8 @@ export class CompanyCollegeComponent implements OnInit{
 }
 SaveChanges(){
   console.log("save changes working",this.WorkDetailForm.value)
-  this.service.saveCollegeDetails('5ca901e5852be73e38710a00',this.WorkDetailForm.value).subscribe((res)=>{
-    console.log("this is",res)
+  this.service.saveCollegeDetails(this.id,this.WorkDetailForm.value).subscribe((res)=>{
+   
   });
 }
 WorkDetailForm = new FormGroup(
@@ -38,7 +42,6 @@ WorkDetailForm = new FormGroup(
 
  //setting forms default values
  setDefaultForm(user){
-  console.log('i ma inside set default',user.email)
    this.WorkDetailForm.get('College').setValue(user.College);
    this.WorkDetailForm.get('University').setValue(user.University);
    this.WorkDetailForm.get('Specialization').setValue(user.Specialization);

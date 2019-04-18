@@ -40,8 +40,10 @@
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">I have read all the policies</label>
                   </div>
+                  <div class="btn-group" role="group" aria-label="Basic example">
                   <button type="submit" [disabled]='!loginForm.valid' class="btn btn-primary" router-link='/postProject'>Submit</button>
-                
+                  <button  class="btn btn-success" router-link='/signup'>signup</button>
+                  </div>
               </form>
   
           </div>

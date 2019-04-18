@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ValidatorFunctions } from '../common/form.validators';
 import {DataService} from '../Services/data.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -10,7 +11,7 @@ import {DataService} from '../Services/data.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private service:DataService) { }
+  constructor(private service:DataService,private router:Router) { }
 flag:String=null;
   ngOnInit() {
   }
@@ -44,7 +45,10 @@ flag:String=null;
  SignUp(){
    console.log('logging happening')
 this.service.SignUp(this.signUpForm.value).subscribe(
-  (res)=>console.log(res),
+  (res:Response)=>{
+    this.ResetForm('Accont created successfully,Login Now');
+    this.router.navigate(['/login']);
+  },
     (err)=>{
       this.ResetForm(err);
     }
@@ -52,7 +56,6 @@ this.service.SignUp(this.signUpForm.value).subscribe(
     );
  }
  ResetForm(err){
-   console.log('hy this is the error',err)
   this.signUpForm.reset();
   this.flag=err.error;
   setTimeout(()=>{

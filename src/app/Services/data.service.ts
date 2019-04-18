@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AppError, NotFoundError } from './../common';
 import {Post} from '../model/post';
 import {User} from '../model/user';
+
 @Injectable()
 export class DataService {
 
   constructor(public http: HttpClient){}
 private url:string="http://localhost:3000";
+
 submit(post){
-  return this.http.post(`${this.url}/form`,post);
+  let headers: HttpHeaders = new HttpHeaders();
+headers = headers.append('x-auth-token', localStorage.getItem('token'));
+  return this.http.post(`${this.url}/form`,post,{headers:headers});
 }
 SignUp(user){
  return this.http.post(`${this.url}/signUp`,user)
@@ -20,7 +24,7 @@ table(){
   return this.http.get(`${this.url}/table`)
 }
   login(user){
-   return this.http.post(`${this.url}/login`,user)
+   return this.http.post(`${this.url}/login`,user,{ observe: 'response' })
   }
   getAll(){
     return this.http.get(this.url)

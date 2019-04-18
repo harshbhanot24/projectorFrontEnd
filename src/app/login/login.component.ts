@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {DataService} from '../Services/data.service';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +14,10 @@ export class LoginComponent implements OnInit {
   constructor(private service:DataService, private router:Router) { }
 
   ngOnInit() {
+    const helper = new JwtHelperService();
+    if (localStorage.getItem('token') && helper.isTokenExpired(localStorage.getItem('token'))) {
+      this.router.navigate(['/post']);
+    }
   }
   flag:String=null;
   loginForm = new FormGroup(
@@ -23,13 +28,20 @@ export class LoginComponent implements OnInit {
     }
   );
   login(){
-    console.log('logging happening')
       this.service.login(this.loginForm.value).subscribe(
-        (res:Response)=>{console.log(res.status)
-          if (res.status==200){
+        (res:any)=>{
+          if (res.body.status==200){
+            console.log('inside res200')
+           if(!localStorage.getItem('token')){
+             localStorage.setItem('token',res.body.token);
+             console.log('inside set token')
+             this.router.navigate(['/post']);
+            }
+            else{
+              console.log('else working')
+              this.router.navigateByUrl('/post');
+            }
             
-            this.router.navigate(['/post']);
-            console.log('hy status')
           }
         },
         (err)=>{  

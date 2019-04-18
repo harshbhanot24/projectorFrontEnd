@@ -12,10 +12,11 @@ import { BasicDetailComponent } from './ProfileChild/basic-detail/basic-detail.c
 import { CompanyCollegeComponent } from './ProfileChild/company-college/company-college.component';
 import { PreferencesComponent } from './ProfileChild/preferences/preferences.component';
 import { SinglePostComponent } from './single-post/single-post.component';
+import { AuthGuard } from './auth/auth.gaurd';
 
 const routes: Routes = [
   {path:'post/:id',component:SinglePostComponent},
-  {path:'post',component:SubmitPostComponent},
+  {path:'post',component:SubmitPostComponent,canActivate: [AuthGuard]},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   
@@ -39,7 +40,7 @@ const routes: Routes = [
   path:"preference",
   component:PreferencesComponent
 }
-]},
+],canActivate: [AuthGuard] },
 {path:'',component:HomeComponent,pathMatch: 'full'}
 
   ];
