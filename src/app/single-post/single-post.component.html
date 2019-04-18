@@ -13,18 +13,27 @@
       <div class="card text-white bg-primary" style="width: 18rem;">
   <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{post.user.Username}} </h5>
-    <p class="card-text">{{post.user.Username}} graduated from {{post.user.College}} and it comes under {{post.user.university}}.</p>
+    <h5 class="card-title">{{post.user.UserName}} </h5>
+    <p class="card-text">Our author {{post.user.UserName}} graduated from {{post.user.College}} and it comes under {{post.user.University}}.</p>
     <a href="#" class="btn btn-info">Go somewhere</a>
   </div>
 </div>
     </aside>
   </div>
-	<div class="col">
+	<div class="col card">
     <h6>{{post.DateCreated | date}}</h6>
     <h3>{{post.heading}}</h3>
-    <h6 class="text-muted blockquote-footer" >By {{post.user.Username}} </h6>
-    <p class="text text-justify text-primary" [froalaView]='post.post'>
+    <div class="card-body">   
+    <h6 class="text-muted blockquote-footer" > <i class="fa fa-user-tie fa-spin"></i>{{post.user.UserName}} </h6>
+    <p class="text text-justify text-primary " [froalaView]='post.post'></p>
+   
+         
+         <div class="list-group  list-group-horizontal">
+                <a href="#" class="list-group-item list-group-item-action " 
+                *ngFor='let file of post.files'><i class="fa fa-link "></i>&nbsp;{{file.originalName}}</a>
+     </div>  
+     </div> 
+     <div class="card-footer">
    <div class="d-flex flex-row  bg-info text-white">
    
     <div class="p-2 bg-warning"><app-like [likeInput]='34'></app-like>&nbsp;23</div>
@@ -32,7 +41,7 @@
     <div class="p-2 bg-warning"><span>{{post.DateCreated | date}}</span></div>
     <div class="p-2 bg-primary"><i class="fa fa-tags"></i><span *ngFor='let tag of post.tags'><strong>{{tag}}&nbsp;</strong></span></div>
   </div>
-  
+</div>
   </div>
 	<div class="col-2">
 <div class="card border-success bg-primary text-white mb-3" style="max-width: 18rem;">

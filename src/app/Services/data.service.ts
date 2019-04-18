@@ -10,7 +10,7 @@ import {User} from '../model/user';
 export class DataService {
 
   constructor(public http: HttpClient){}
-private url:string="http://localhost:3000";
+private url:string="https://fast-waters-72330.herokuapp.com";
 
 submit(post){
   let headers: HttpHeaders = new HttpHeaders();
