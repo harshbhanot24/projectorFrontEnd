@@ -2,23 +2,26 @@
 <div class=" card">
   <h5 class="card-header bg-info text-white text-center">Tell us more about you</h5>
 <br>
+<div class="row" *ngIf="flag">
+    <app-alerts [alertMsg]='Data' [type]='type'></app-alerts>  
+</div>
 <div class="row">
   <div class="col-md-6 offset-md-1">
    
     <form [formGroup]='BasicDetailForm' (ngSubmit)='SaveChanges()'>
 <div class="form-row">
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-12 m-2">
     <label for="inputEmail4" >Email</label>
     <input type="email" formControlName='email' class="form-control" id="inputEmail4" placeholder="Email">
     <small *ngIf="Email.touched && Email.hasError('required')" class="text text-danger">Email is required</small>
     <small *ngIf="Email.touched && Email.hasError('email')" class="text text-danger">Email is not valid</small>
   </div>
-  <div class="form-group col-md-6">
+  <!-- <div class="form-group col-md-6">
     <label for="inputPassword4">Password</label>
     <input type="password"  formControlName='password' class="form-control" id="inputPassword4" placeholder="Password">
     <small *ngIf="Password.touched && Password.hasError('required')" class="text text-danger">password is required</small>
     <small *ngIf="Password.touched && Password.hasError('pattern')" class="text text-danger">Password is not valid</small>
-  </div>
+  </div> -->
 </div>
 
 <div class="form-group">
@@ -44,7 +47,7 @@
 <label class="custom-file-label" for="customFile">Choose Profile Pic</label>
 </div>
 </div>
-<div class="btn-group" role="group" aria-label="Basic example">
+<div class="btn-group m-2" role="group" aria-label="Basic example">
 <button type="submit" class="btn btn-primary" [disabled]='!BasicDetailForm.valid'>Save</button>
 <button type="reset" class="btn btn-danger">Reset</button>
 </div>

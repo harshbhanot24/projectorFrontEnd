@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { RatingModule } from 'ngx-bootstrap/rating';
+import { AlertModule } from 'ngx-bootstrap/alert';
+
 import { ViewsComponent } from './views/views.component';
 import { DataService } from './Services/data.service';
 import { PostComponent } from './post/post.component';
@@ -27,6 +30,12 @@ import { PreferencesComponent } from './ProfileChild/preferences/preferences.com
 import { UserDataService } from './Services/user-data.service';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { SinglePostComponent } from './single-post/single-post.component';
+import { AuthorFilterComponent } from './filters/author-filter/author-filter.component';
+import { AlertsComponent } from './alerts/alerts.component';
+import { RatingComponent } from './plugins/rating/rating.component';
+import { CarousalComponent } from './carousal/carousal.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,16 +49,19 @@ import { SinglePostComponent } from './single-post/single-post.component';
     LoginComponent,
     SignupComponent,
     FilterTopComponent,
-  
+    RatingComponent,
     AdminComponent,
     ProfileComponent,
     BasicDetailComponent,
     CompanyCollegeComponent,
     PreferencesComponent,
-    SinglePostComponent
+    SinglePostComponent,
+    AuthorFilterComponent,
+    AlertsComponent,
+    CarousalComponent
   ],
-  imports: [FileUploadModule,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
-    BrowserModule,BrowserAnimationsModule,MatButtonModule, MatCheckboxModule,
+  imports: [FileUploadModule,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),AlertModule.forRoot(),
+    BrowserModule,BrowserAnimationsModule,BsDropdownModule.forRoot(),RatingModule.forRoot(),CarouselModule.forRoot(),
     AppRoutingModule,DemoMaterialModule,FormsModule,ReactiveFormsModule,HttpClientModule
   ],
   providers: [DataService,UserDataService],

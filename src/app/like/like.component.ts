@@ -8,8 +8,8 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 export class LikeComponent implements OnInit {
   @Output('likeData') likeData = new EventEmitter();
   @Input('likeInput') likeInput;
-  private like:number;
-  private thumbs: string;
+  like:number;
+ thumbs: string;
   constructor() { }
 
   ngOnInit() {

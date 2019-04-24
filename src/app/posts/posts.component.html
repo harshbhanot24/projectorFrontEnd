@@ -1,10 +1,25 @@
-<div class="container">
-  <div class="row blue lighten-5">
-    <div class="col s12">
-    <div *ngFor="let post of PostData">
-      <app-post [PostData]='post'></app-post>
 
-    </div>
-    </div>
-  </div>
+<div class="container-fluid clearfix">
+    
+    <div class="row  clearfix">
+        <div class="col-12 col-md-2">
+
+            <app-author-filter></app-author-filter>
+        </div>
+        <div class="col-12 col-md-8">
+         <app-filter-top></app-filter-top>
+        <div *ngFor="let post of PostData">
+          <app-post [PostData]='post'></app-post>
+    
+        </div>
+        </div>
+        <div class="col-12 col-md-2 d-none d-md-block">
+            <ul class="list-group">
+                <li class="list-group-item active">Some Popular Post</li>
+               <li class="list-group-item" *ngFor='let post of PopularPost'>{{post}}</li>
+                
+              </ul>
+        </div>
+      </div>
 </div>
+  

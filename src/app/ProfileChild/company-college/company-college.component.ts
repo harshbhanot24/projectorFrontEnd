@@ -9,7 +9,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./company-college.component.css']
 })
 export class CompanyCollegeComponent implements OnInit{
-  
+  flag:Boolean=false;
+  Data:String;
+  type:String='success';
   helper = new JwtHelperService();
   decodedToken = this.helper.decodeToken(localStorage.getItem('token'));
    id=this.decodedToken._id;
@@ -26,7 +28,13 @@ export class CompanyCollegeComponent implements OnInit{
 SaveChanges(){
   console.log("save changes working",this.WorkDetailForm.value)
   this.service.saveCollegeDetails(this.id,this.WorkDetailForm.value).subscribe((res)=>{
-   
+    this.flag=true;
+      this.Data='Hurray! your Profile has been updated'
+      setTimeout(()=>{this.flag=false},3000)
+   ,
+   (err)=>{
+     console.log(err)
+   }
   });
 }
 WorkDetailForm = new FormGroup(

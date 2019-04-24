@@ -8,8 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./single-post.component.css']
 })
 export class SinglePostComponent implements OnInit {
-private postId;
-private post;
+ postId;
+ post;
   constructor(private service:PostDataService,private route:ActivatedRoute) { }
 
   ngOnInit() {

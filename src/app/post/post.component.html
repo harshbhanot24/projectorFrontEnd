@@ -1,26 +1,26 @@
-<div class="col-md-8">
-  <div class="card border border-secondary rounded-right">
 
-<div class="media border p-3 bg-primary text-white">
-    <img src="{{user.AvatarUrl}}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+  <div class="card border border-primary rounded-right shadow">
+
+<div class="media border p-2 bg-primary text-white">
+    <img src="https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-male-3-512.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
     <div class="media-body">
       <h5>{{post.user.UserName}} <small><i>Posted on {{post.DateCreated | date}}</i></small></h5>
       <h4> {{post.heading}}</h4>
        </div>
        </div>
-      <div class="card-body">
+      <div class="card-body" (click)="getPost()">
 
           <p class="text text-justify text-primary" [froalaView]='post.post | slice:1:400'>
             <a (click)="getPost()">read more...</a> </p>
 
       </div>
 
-<div class="d-flex flex-row  bg-info text-white" (click)="getPost()">
+<div class="d-flex flex-row  bg-dark text-white" >
    
-    <div class="p-2 bg-warning"><app-like [likeInput]='post.like'></app-like>&nbsp;23</div>
-    <div class="p-2 bg-primary"><app-views [views]='post.view'></app-views></div>
-    <div class="p-2 bg-warning"><span>{{post.DateCreated | date}}</span></div>
-    <div class="p-2 bg-primary"><i class="fa fa-tags"></i><span *ngFor='let tag of post.tags'><strong>{{tag}}&nbsp;</strong></span></div>
+    <div class="p-1 m-1 bg-danger border border rounded-left"><app-rating [average]='8'></app-rating></div>
+    <div class="p-1 m-1 bg-primary border "><app-views [views]='post.view'></app-views></div>
+    <div class="p-1 m-1 bg-warning border"><span>{{post.DateCreated | date}}</span></div>
+    <div class="p-1 m-1 bg-primary  border" *ngIf="post.tags.length>0"><i class="fa fa-tags"></i><span *ngFor='let tag of post.tags'><strong>{{tag}}&nbsp;</strong></span></div>
   </div>
   
 </div>

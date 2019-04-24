@@ -3,23 +3,25 @@
             <div class="col-md-8 offset-md-2">
     
                 <div class="card ">
-                    <div class="card-header bg-success text-white">
+                    <div class="card-header bg-primary text-white">
                         <h4 class="text-center">Submit Post</h4>
                     </div>
     
                     <form [formGroup]='form'  enctype="multipart/form-data">
                         <div class="card-body">
-    
+                                <div class="row" *ngIf="flag">
+                                        <app-alerts [alertMsg]='data' [type]='type'></app-alerts>  
+                                  </div>
                             <div class="form-group col-md-6">
                                 <label class="active" for="heading">Heading</label>
                                 <input id="heading" type="text" class="validate form-control" data-length="150" formControlName='heading' placeholder="Enter Heading">
-                                <!--input 1-->n
+                                <!--input 1-->
                                 <small *ngIf='Heading.touched && Heading.hasError("required")'>Heading is required</small>
                                 <small *ngIf='Heading.hasError("minlength")'>Heading is too short</small>
                                 <small *ngIf='Heading.hasError("maxlength")'>Heading is too long</small>
                             </div>
                             <div class="form-group">
-                                <label for="details">Textarea</label>
+                                <label for="details">Details</label>
                                 <!-- <textarea id="details" class="form-control" formControlName='details' placeholder="Enter Post Details"></textarea> -->
                                 <textarea [froalaEditor] formControlName="details"></textarea>
                                 <!--input 2-->
@@ -50,7 +52,7 @@
                             </div>
     
                             <div class="form-group">
-                                <select [(value)]="selected" multiple placeholder="Tags" formControlName='tags' id='tags'>
+                                <select ng multiple placeholder="Tags" formControlName='tags' id='tags'>
                                     <!--input 4-->
                                     <option disabled>Select a tag</option>
                                     <option value="option1">tag 1</option>

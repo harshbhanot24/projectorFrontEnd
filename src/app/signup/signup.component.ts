@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ValidatorFunctions } from '../common/form.validators';
-import {DataService} from '../Services/data.service';
+
 import { Router } from '@angular/router';
+import { UserDataService } from '../Services/user-data.service';
+import { AnimationQueryMetadata } from '@angular/animations';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -11,8 +13,9 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private service:DataService,private router:Router) { }
+  constructor(private service:UserDataService,private router:Router) { }
 flag:String=null;
+type:'danger';
   ngOnInit() {
   }
   signUpForm = new FormGroup(
@@ -46,7 +49,8 @@ flag:String=null;
    console.log('logging happening')
 this.service.SignUp(this.signUpForm.value).subscribe(
   (res:Response)=>{
-    this.ResetForm('Accont created successfully,Login Now');
+    localStorage.removeItem('token')
+    this.ResetForm();
     this.router.navigate(['/login']);
   },
     (err)=>{
@@ -55,9 +59,13 @@ this.service.SignUp(this.signUpForm.value).subscribe(
     ,()=>console.log('completed')
     );
  }
- ResetForm(err){
+ ResetForm(err?:any){
+   console.log('resetcalled'+JSON.stringify(err))
   this.signUpForm.reset();
-  this.flag=err.error;
+  if(err)
+  this.flag=err.error.err;
+  else
+  this.flag='Account created successfully redirecting to login'
   setTimeout(()=>{
     this.flag=null;
   },5000)

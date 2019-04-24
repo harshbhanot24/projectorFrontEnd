@@ -1,7 +1,6 @@
 import { Input,Component, OnInit } from '@angular/core';
 import {DataService} from '../Services/data.service';
 
-import {User} from '../model/user';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-post',
@@ -11,11 +10,10 @@ import { Router } from '@angular/router';
 export class PostComponent implements OnInit {
   @Input('PostData') post;
 
-private user:User;
-  constructor(private service:DataService,private router:Router) { }
+ user:any;
+  constructor(private router:Router) { }
 
   ngOnInit() {
-    this.user=this.service.getUser();
     //this.post=this.service.getPosts();
     
   }

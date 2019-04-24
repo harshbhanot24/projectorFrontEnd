@@ -9,6 +9,7 @@ import { PostDataService } from '../Services/post-data.service';
 export class PostsComponent implements OnInit {
 loop:number[]=[1,2,3,4,5,6,7,8,9,10];
  posts;
+ PopularPost;
  PostData:Object[];
   constructor(private service:PostDataService) { }
 
@@ -16,7 +17,9 @@ loop:number[]=[1,2,3,4,5,6,7,8,9,10];
     this.service.GetPosts().subscribe(
       (res)=>{this.posts=(res)
      this.PostData=this.posts.Data;
-     console.log(this.PostData)
+     this.PopularPost=this.posts.Data.map((item:any)=>{
+        return item.heading;
+     })
     }
     ,(err)=>console.log(err)
     )

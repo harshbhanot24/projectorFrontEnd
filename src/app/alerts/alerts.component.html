@@ -1,0 +1,6 @@
+<div class="d-flex">  
+<alert [type]="alert.type" [dismissible]="alert.dismissible" [dismissOnTimeout]="alert.timeout">
+    <strong *ngIf="alert.type=='danger'">Oh snap! I guess</strong>
+   {{alert.msg}}</alert>
+</div>
+ 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import {DataService} from '../Services/data.service';
+
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserDataService } from '../Services/user-data.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private service:DataService, private router:Router) { }
+  constructor(private service:UserDataService, private router:Router) { }
 
   ngOnInit() {
     const helper = new JwtHelperService();
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
     }
   }
   flag:String=null;
+  type:'primary';
   loginForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -30,15 +32,15 @@ export class LoginComponent implements OnInit {
   login(){
       this.service.login(this.loginForm.value).subscribe(
         (res:any)=>{
-          if (res.body.status==200){
-            console.log('inside res200')
+          if (res.status==200){
            if(!localStorage.getItem('token')){
-             localStorage.setItem('token',res.body.token);
-             console.log('inside set token')
+             localStorage.setItem('token',res.token);
+             
              this.router.navigate(['/post']);
             }
             else{
-              console.log('else working')
+              localStorage.removeItem('token')//remove old token 
+              localStorage.setItem('token',res.token);
               this.router.navigateByUrl('/post');
             }
             
@@ -56,7 +58,7 @@ export class LoginComponent implements OnInit {
   this.flag=err.err;
   setTimeout(()=>{
     this.flag=null;
-  },3000)
+  },5000)
  }
   get Email(){
    return this.loginForm.get('email');

@@ -4,6 +4,7 @@ import {FormsModule,ReactiveFormsModule,Validators} from '@angular/forms';
 import {FileSelectDirective,FileUploader} from 'ng2-file-upload';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 import { DataService } from '../Services/data.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-submit-post',
   templateUrl: './submit-post.component.html',
@@ -11,9 +12,12 @@ import { DataService } from '../Services/data.service';
 })
 export class SubmitPostComponent implements OnInit {
   private url:string="http://localhost:3000/posts";
+  flag=false;
+  data='';
+  type='success';
 uploader:FileUploader=new FileUploader({url:this.url})
 attachmentList:any=[];
-constructor(public http: HttpClient,private service:DataService){
+constructor(public http: HttpClient,private service:DataService,private router:Router){
 
      this.uploader.onCompleteItem=(Item:any,response:any,status:any)=>{
        let result=JSON.parse(response);
@@ -31,11 +35,19 @@ ONsubmit(){
         uploadFileList:this.attachmentList
   }
   if(this.form.value.heading!=""){
-    console.log("sumbit wrking",this.form.value)
   this.service.submit(post).subscribe(
-    (res)=>{console.log(res)
+    (res:any)=>{
+      console.log('res working',res)
+      if(res.status==200){
      this.attachmentList="";//so that new post can be done
       this.form.reset();
+      this.flag=true;
+      this.data="Your form has been submitted and now redirecting you to home page"
+      setTimeout(()=>{
+        this.flag=false;
+        this.router.navigate(['']);
+      },5000)
+    }
     },
     (err)=>{console.log(err)
       this.form.reset();}//reset form after error occur

@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 export class PostDataService {
 
   constructor(public http: HttpClient){}
-  private url:string="https://fast-waters-72330.herokuapp.com";
-  
+  private url1:string="https://fast-waters-72330.herokuapp.com";
+  private url:string="http://localhost:3000";
   GetPosts(){
     return this.http.get(`${this.url}/form`)
   //logic to get user ID wuill be here

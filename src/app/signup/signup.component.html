@@ -1,23 +1,22 @@
-<div class="container">
-    <br><br><br>
-      <div class="row">
+<div class="container ">
+ <br><br><br>
+      <div class="row ">
       <div class="col-md-3"></div>
       <div class="col-md-6">
         <div class="container border-primary">
       <div class="row">
           <div class="col-md-12 card border-primary ">
               <div class="row">
-                  <div class="col-md-12 text-center alert alert-primary">
+                  <div class="col-md-12 text-center bg-primary p-3 text-white">
                       <h4 class="text text-center">Sign Up</h4>
   
                   </div>
               </div>
               <form [formGroup]='signUpForm' (ngSubmit)='SignUp()'>
-                  <div class="row text-center" *ngIf="flag">
-                      <div>{{flag}}</div>
-                  </div>
-  
-                  <div class="form-group">
+                    <div class="row" *ngIf="flag">
+                            <app-alerts [alertMsg]='flag' [type]='type'></app-alerts>  
+                      </div>
+                  <div class="form-group mt-1">
                       <label for="exampleInputEmail1">Email address</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName='email'>
                       <small *ngIf="Email.touched && Email.hasError('required')">Email is required</small>
