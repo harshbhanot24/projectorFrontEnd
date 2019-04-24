@@ -9,8 +9,8 @@ import { AppError, NotFoundError } from './../common';
 export class DataService {
 
   constructor(public http: HttpClient){}
-private url2:string="https://fast-waters-72330.herokuapp.com";
-private url:string="http://localhost:3000";
+private url:string="https://fast-waters-72330.herokuapp.com";
+private url1:string="http://localhost:3000";
 submit(post){
   let headers: HttpHeaders = new HttpHeaders();
 headers = headers.append('x-auth-token', localStorage.getItem('token'));
