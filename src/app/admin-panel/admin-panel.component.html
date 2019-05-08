@@ -1,0 +1,166 @@
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-md-7 col-sm-12 ">
+      <div class="card">
+        <div class="card-body">
+      <h2 class=" text-primary text-center">Your Activities In a Nutshell</h2>
+  </div>
+      </div>
+       
+
+      <div class="card-group text-center ">
+        <div class="card text-white bg-primary m-2 w-100" style="max-width: 20rem;">
+  <div class="card-header">Here are some quick stats for you</div>
+  <div class="card-body">
+    <h5 class="card-title">This is how your posts are performing</h5>
+   <ul class="list-group list-group-flush  text-dark">
+  <li class="list-group-item"><strong>5 Overall Rating</strong></li>
+  <li class="list-group-item"><strong>5 highest Rating</strong></li>
+  <li class="list-group-item"><strong>3 lowest Rating</strong></li>
+  <li class="list-group-item"><strong>100+ views</strong></li>
+  <li class="list-group-item"><strong>4th top rated Writer</strong></li>
+</ul>
+  </div>
+</div>
+      <div class="card text-white bg-primary m-2 w-100" style="max-width: 25rem;">
+  <div class="card-header">Here is your Worklist</div>
+  <div class="card-body">
+    <h5 class="card-title">Please Rate these Solutions</h5>
+   <ul class="list-group list-group-flush  text-dark">
+  <li class="list-group-item"><strong>Problem is that you have 1-by user1</strong></li>
+  <li class="list-group-item"><strong>Problem 2-by user2</strong></li>
+  <li class="list-group-item"><strong>Problem 1-by user3</strong></li>
+  <li class="list-group-item"><strong>Problem 5-by user4</strong></li>
+  <li class="list-group-item"><strong>Problem 3-by user5</strong></li>
+</ul>
+  </div>
+</div>
+</div>
+<br><br>
+<!-- start of table -->
+<div class="card">
+  <div class="card-body">
+      <h2 class=" text-secondary text-center">Your List of Posts <a href="#"><i class="fa fa-edit float-right p-1"></i></a> </h2>
+  </div>
+</div>
+<table class="table table-hover ">
+  <thead class="bg-secondary text-white">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col-2">Post</th>
+      <th scope="col">Vote</th>
+      <th scope="col">views</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"> <input type="checkbox" aria-label="Checkbox for following text input"></th>
+      <td>Post 1 is this here</td>
+      <td>5</td>
+      <td>100</td>
+      <td>  <a href=""><i class="fa fa-2x fa-edit text-center "></i></a></td>
+      <td> <a href=""><i class="fa fa-2x fa-times-circle"></i></a></td>
+    </tr>
+    <tr>
+      <th scope="row"> <input type="checkbox" aria-label="Checkbox for following text input"></th>
+      <td>Post 2 is this here</td>
+      <td>4</td>
+      <td>434</td>
+      <td>  <a href=""><i class="fa fa-2x fa-edit text-center"></i></a></td>
+      <td> <a href=""><i class="fa fa-2x fa-times-circle"></i></a></td>
+    </tr>
+    <tr>
+      <th scope="row"> <input type="checkbox" aria-label="Checkbox for following text input"></th>
+      <td>Post 3 is this here</td>
+      <td>3</td>
+      <td>9</td>
+      <td>  <a href=""><i class="fa fa-2x fa-edit text-center"></i></a></td>
+      <td> <a href=""><i class="fa fa-2x fa-times-circle"></i></a></td>
+    </tr>
+  
+  </tbody>
+  
+</table>
+ 
+     
+      
+      <td class="text text-left">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button class="btn btn-info">Select All</button>
+  <button type="button" class="btn btn-success">Add New</button>
+  <button type="button" class="btn btn-danger">Delete Selected</button>
+</div>
+    
+ 
+      </div><!--Your activities column -->
+      
+    <div class="col-md-5">
+      <div class="card">
+  <div class="card-body">
+      <h2 class=" text-secondary text-center">Your Profile <a routerLink='/profile'><i class="fa fa-edit float-right p-1"></i></a> </h2>
+  </div>
+</div>
+      <div class="card mt-3 bg-secondary text-white">
+  <div class="card-header">
+    Basic Details <a routerLink='/profile/Basic'> <i class="fa fa-edit float-right p-1 text-white"></i></a>
+  </div>
+  <div class="input-group  mt-2 p-2">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{user.email}}" disabled>
+</div>
+  <div class="input-group mt-1 p-2">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">UserName</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{user.UserName}}" disabled>
+</div>
+ <div class="input-group mt-1 p-2">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Gender</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{user.gender}}" disabled>
+</div>
+</div>
+     <div class="card mt-3 bg-secondary text-white">
+  <div class="card-header">
+    College/Work Details <a routerLink='/profile/Company'> <i class="fa fa-edit float-right p-1 text-white"></i></a>
+  </div>
+  <div class="input-group  mt-2 p-2">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">College</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{user.College}}" disabled>
+</div>
+  <div class="input-group mt-1 p-2">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">University</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{user.University}}" disabled>
+</div>
+ <div class="input-group mt-1 p-2">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Specialization</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{user.Specialization}}" disabled>
+</div>
+<div class="input-group mt-1 p-2">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Passing Year</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{user.PassingYear}}" disabled>
+</div>
+<div class="input-group mt-1 p-2">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Company</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{user.Company}}" disabled>
+</div>
+</div>
+    </div>
+  
+  </div>
+</div>

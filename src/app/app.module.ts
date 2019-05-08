@@ -35,6 +35,7 @@ import { AlertsComponent } from './alerts/alerts.component';
 import { RatingComponent } from './plugins/rating/rating.component';
 import { CarousalComponent } from './carousal/carousal.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     SinglePostComponent,
     AuthorFilterComponent,
     AlertsComponent,
-    CarousalComponent
+    CarousalComponent,
+    AdminPanelComponent
   ],
   imports: [FileUploadModule,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),AlertModule.forRoot(),
     BrowserModule,BrowserAnimationsModule,BsDropdownModule.forRoot(),RatingModule.forRoot(),CarouselModule.forRoot(),

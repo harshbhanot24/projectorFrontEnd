@@ -23,8 +23,8 @@ export class AuthGuard implements CanActivate {
         const helper = new JwtHelperService();
         if (localStorage.getItem('token') && helper.isTokenExpired(localStorage.getItem('token'))) {
             // logged in so return true
-            const token=localStorage.getItem('token');
-            console.log(helper.decodeToken(token));
+            
+          
             return true;
         }
         return false;
@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
         const helper = new JwtHelperService();
         if (localStorage.getItem('token') && helper.isTokenExpired(localStorage.getItem('token'))) {
             const token=localStorage.getItem('token');
-            console.log(helper.decodeToken(token));
+           
         }
         return false;
     }

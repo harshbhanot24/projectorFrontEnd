@@ -19,7 +19,7 @@
         <li role="menuitem" ><a class="dropdown-item" (click)='signup()' *ngIf='!obj.isloggedIn()'>Signup &nbsp;<i class="fa  fa-user-plus"></i></a></li>
         <li role="menuitem" ><a class="dropdown-item" (click)='edit()' [class.disabled]='!obj.isloggedIn()'>Manage Profile &nbsp;<i class="fa fa-wrench"></i></a></li>
         <li role="menuitem" ><a class="dropdown-item" (click)='submit()' [class.disabled]='!obj.isloggedIn()'>Submit Post &nbsp;<i class="fa  fa-edit"></i></a></li>
-       
+        <li role="menuitem" ><a class="dropdown-item" (click)='admin()' [class.disabled]='!obj.isloggedIn()'>Admin Panel &nbsp;<i class="fa  fa-edit"></i></a></li>
         <li class="divider dropdown-divider" *ngIf='obj.isloggedIn()'></li>
         <li role="menuitem"><a class="dropdown-item"(click)='logout()' *ngIf='obj.isloggedIn()'>logout &nbsp;<i class="fa fa-sign-out"></i></a></li>
       </ul>

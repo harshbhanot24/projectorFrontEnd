@@ -23,6 +23,10 @@ logout(){
   localStorage.clear();
   this.router.navigate(['']);
 }
+admin(){
+  
+  this.router.navigate(['/Admin']);
+}
 login(){
  this.router.navigate(['/login']);
 }

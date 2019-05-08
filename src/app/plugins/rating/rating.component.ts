@@ -1,11 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.css']
 })
-export class RatingComponent implements OnInit {
+export class RatingComponent implements OnInit ,OnDestroy{
+  ngOnDestroy(): void {
+    console.log(this.rate)
+  }
 @Input() average;
 @Input() RatedNumber;
   constructor() { }

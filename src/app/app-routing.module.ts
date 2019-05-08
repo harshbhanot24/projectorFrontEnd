@@ -6,13 +6,13 @@ import {LoginComponent} from './login/login.component';
 
 import {SignupComponent} from './signup/signup.component';
 import {SubmitPostComponent} from './submit-post/submit-post.component';
-import { AdminComponent } from './admin/admin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BasicDetailComponent } from './ProfileChild/basic-detail/basic-detail.component';
 import { CompanyCollegeComponent } from './ProfileChild/company-college/company-college.component';
 import { PreferencesComponent } from './ProfileChild/preferences/preferences.component';
 import { SinglePostComponent } from './single-post/single-post.component';
 import { AuthGuard } from './auth/auth.gaurd';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
   {path:'post/:id',component:SinglePostComponent},
@@ -20,13 +20,14 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   
-  {path:'admin',component:AdminComponent},
+  {path:'Admin',component:AdminPanelComponent,canActivate:[AuthGuard]},
   {path:'profile',component:ProfileComponent,
   children:[ {
     path: "",
     component: BasicDetailComponent
     
   },
+ 
   {
     path: "Basic",
     component: BasicDetailComponent

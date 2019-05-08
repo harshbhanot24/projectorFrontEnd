@@ -10,8 +10,8 @@ export class UserDataService {
     }
 
 constructor(public http: HttpClient){}
-private url:string="https://fast-waters-72330.herokuapp.com";
-private url1:string="http://localhost:3000";
+private url1:string="https://fast-waters-72330.herokuapp.com";
+private url:string="http://localhost:3000";
 GetDetails(id){
    console.log(this.url+'/user/'+id);
 //logic to get user ID wuill be here
